@@ -8,10 +8,12 @@ import { IoCloseSharp } from "react-icons/io5";
 import JobCard, { Job } from "@/components/JobCard";
 import data from "@/assets/data.json";
 import { useState } from "react";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const page = () => {
   const [activeTags, setActiveTags] = React.useState<String[]>([]);
   const [filteredData, setFilteredData] = useState<Job[]>(data);
+  const [animationParent] = useAutoAnimate();
 
   useEffect(() => {
     const newFilteredData =
@@ -52,7 +54,10 @@ const page = () => {
           alt="bg-header-desktop"
         />
       </div>
-      <main className="items-center w-full h-full flex flex-col gap-10 md:gap-5  border mx-auto max-w-[950px] relative">
+      <main
+        ref={animationParent}
+        className="items-center w-full h-full flex flex-col gap-10 md:gap-5 mx-auto max-w-[950px] relative"
+      >
         {/* filter */}
         {activeTags.length > 0 && (
           <div className="w-full bg-white shadow-lg py-4 px-6 rounded-md absolute top-[-80px] flex justify-between">
