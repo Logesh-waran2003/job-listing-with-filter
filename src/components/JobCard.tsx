@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 import sampleImg from "@/assets/images/photosnap.svg";
 
-type Job = {
+export type Job = {
   id: number;
   company: string;
   logo: string;
@@ -19,7 +19,11 @@ type Job = {
   tools?: string[];
 };
 
-const JobCard = (props: Job) => {
+interface Props extends Job {
+  handleClick: (tag: string) => void;
+}
+
+const JobCard = (props: Props) => {
   return (
     <div
       className={cn(
@@ -60,15 +64,15 @@ const JobCard = (props: Job) => {
           </div>
         </div>
       </div>
-      <hr className="md:hidden my-3 "/>
+      <hr className="md:hidden my-3 " />
       {/* right side */}
       <div className="flex gap-3">
-        {props.languages &&
-          props.languages.map((languages, ind) => (
+        {props.languages?.map((languages, ind) => (
             <div className="">
               <button
+                onClick={() => props.handleClick(languages)}
                 key={ind}
-                className=" font-bold text-sm text-primary rounded px-2 py-0.5 bg-[hsl(180,52%,96%)]"
+                className=" font-bold text-sm text-primary hover:bg-primary hover:text-white rounded px-2 py-0.5 bg-[hsl(180,52%,96%)]"
               >
                 {languages}
               </button>
@@ -78,8 +82,9 @@ const JobCard = (props: Job) => {
           props.tools.map((tools, ind) => (
             <div className="">
               <button
+                onClick={() => props.handleClick(tools)}
                 key={ind}
-                className=" font-bold text-sm text-primary rounded px-2 py-0.5 bg-[hsl(180,52%,96%)]"
+                className=" font-bold text-sm text-primary hover:bg-primary hover:text-white rounded px-2 py-0.5 bg-[hsl(180,52%,96%)]"
               >
                 {tools}
               </button>
