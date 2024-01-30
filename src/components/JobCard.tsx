@@ -27,18 +27,18 @@ const JobCard = (props: Props) => {
   return (
     <div
       className={cn(
-        "bg-white shadow-lg rounded md:flex justify-between w-full max-w-[950px] px-6 py-4 items-center relative mb-8",
+        "bg-white shadow-lg rounded md:flex justify-between w-full max-w-[950px] px-6 py-4 items-center relative my-4",
         { "border-l-4 border-primary": props.featured }
       )}
     >
       {/* left */}
       <div className="flex gap-4 ">
         <Image
-          width={100}
-          height={100}
-          className="h-[70px] w-[70px] absolute md:static top-[-30px] left[-20px]"
+          width={70}
+          height={70}
+          className="md:h-[100px] md:w-[100px] absolute md:static top-[-30px] left[-20px]"
           src={props.logo}
-          alt="sampleIng"
+          alt="sampleImg"
         ></Image>
         <div className="flex flex-col gap-2 pt-8">
           <div className="flex items-center text-sm gap-2">
@@ -68,16 +68,16 @@ const JobCard = (props: Props) => {
       {/* right side */}
       <div className="flex gap-3">
         {props.languages?.map((languages, ind) => (
-            <div className="">
-              <button
-                onClick={() => props.handleClick(languages)}
-                key={ind}
-                className=" font-bold text-sm text-primary hover:bg-primary hover:text-white rounded px-2 py-0.5 bg-[hsl(180,52%,96%)]"
-              >
-                {languages}
-              </button>
-            </div>
-          ))}
+          <div className="">
+            <button
+              onClick={() => props.handleClick(languages)}
+              key={ind}
+              className=" font-bold text-sm text-primary hover:bg-primary hover:text-white rounded px-2 py-0.5 bg-[hsl(180,52%,96%)]"
+            >
+              {languages}
+            </button>
+          </div>
+        ))}
         {props.tools &&
           props.tools.map((tools, ind) => (
             <div className="">

@@ -56,7 +56,7 @@ const page = () => {
       </div>
       <main
         ref={animationParent}
-        className="items-center w-full h-full flex flex-col gap-10 md:gap-5 mx-auto max-w-[950px] relative"
+        className="items-center w-full h-full flex flex-col gap-10 md:gap-5 my-4 mx-auto max-w-[950px] relative"
       >
         {/* filter */}
         {activeTags.length > 0 && (
